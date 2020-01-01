@@ -7,13 +7,10 @@ import router from './router'
 import store from './store'
 
 
-//axios
-//.get('https://api.coindesk.com/v1/bpi/currentprice.json')
-//.then(response => this.data.info = response.data.bpi)
 
 Vue.config.productionTip = false
 var info = null;
-new Vue({
+  const  app = new Vue({
   router,
   store,
   data () {
