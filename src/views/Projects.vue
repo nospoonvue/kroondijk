@@ -1,50 +1,54 @@
 <template>
  <div id="projects">
   <h1>bla</h1>
-  {{status}}
+  <BlogListing id="blogListing" v-bind:blogs="info" />
 
- <div v-for="(item, index) in info" :key="index">
-   {{ item.fields["Title-NL"]}}
-</div>
+  
+wat een mooie template
 </div>
 </template>
 
 <script>
 import axios from 'axios';
-const url = `https://script.google.com/macros/s/AKfycbxdxAaP33kUP1kO0J4TOHKdz6FMoiIVPCqQvrGaoNfrWbAeJiY/exec`;
+import BlogListing from '@/components/BlogListing.vue'
 
-async function getData(appding)
+const baseUrl = `https://script.google.com/macros/s/AKfycbxdxAaP33kUP1kO0J4TOHKdz6FMoiIVPCqQvrGaoNfrWbAeJiY/exec`;
+
+async function getData(viewStatus)
 {
-     await axios.get (url, {})
+     await axios.get (baseUrl, {})
             .then(response => 
             {
-                 appding.info = response.data.records;
-                 appding.status = "";
+                 viewStatus.info = response.data.records;
+                 viewStatus.status = "done";
 
             }).catch
             (
                 function (error) 
                 {
                     console.log(error)
-                    appding.status = error;
+                    viewStatus.status = error;
                 }
             )
 }
 
 export default 
 {
-  data() {
+    name: "projects",
+    components: {BlogListing},
+
+    data() 
+    {
     return {
-      info: null,
-      status: ""
-    }
-  },
-  // Fetches posts when the component is created.
+        info: null,
+        status: ""
+        }
+    },
     created() 
     {
         this.status = "loading...";
         getData(this);
-    }
+    },
 }
 
 

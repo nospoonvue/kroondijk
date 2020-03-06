@@ -9,13 +9,13 @@ import store from './store'
 
 
 Vue.config.productionTip = false
-var info = null;
+
   const  app = new Vue({
   router,
   store,
   data () {
     return {
-      info: null,
+
       loading: true,
       errored: false
     }

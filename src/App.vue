@@ -1,10 +1,13 @@
+
+    <script :src="${publicPath}assets/js/Kroondijk.js"></script>
+
 <template>
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About what the fuck</router-link> | 
-       <router-link to="/projects">Projects</router-link>
-       
+      <router-link to="/about">About</router-link> | 
+       <router-link to="/projects" >Projects  </router-link>
+      
     </div>
     <router-view/>
 
@@ -12,6 +15,14 @@
   </div>
 </template>
 
+
+export default {
+   return {
+    publicPath: process.env.BASE_URL
+  }
+}
+
+</script>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
